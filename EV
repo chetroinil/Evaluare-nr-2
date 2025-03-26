@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<git_guide>
+    <title>Ghid Comenzi Git</title>
+    
+    <section id="commit">
+        <title>I. Commit</title>
+
+        <step>
+            <number>1</number>
+            <description>Crează repository pe GitHub</description>
+            <command>git init EvaluareNr2</command>
+            <command>cd EvaluareNr2</command>
+        </step>
+
+        <step>
+            <number>2</number>
+            <description>Adaugă fișierul index.ev.2.html</description>
+            <command>touch index.ev.2.html</command>
+            <command>git add index.ev.2.html</command>
+        </step>
+
+        <step>
+            <number>3</number>
+            <description>Fă commit pentru fișierul index.ev.2.html</description>
+            <command>git commit -m "Add index.ev.2.html"</command>
+        </step>
+
+        <step>
+            <number>4</number>
+            <description>Clonează repository-ul</description>
+            <command>git clone &lt;repository-url&gt;</command>
+            <command>cd EvaluareNr2</command>
+        </step>
+
+        <step>
+            <number>5</number>
+            <description>Adaugă fișierul local settings.xml</description>
+            <command>touch settings.xml</command>
+            <command>git add settings.xml</command>
+        </step>
+
+        <step>
+            <number>6</number>
+            <description>Fă commit pentru fișierul settings.xml</description>
+            <command>git commit -m "Commit file settings.xml"</command>
+        </step>
+
+        <step>
+            <number>7</number>
+            <description>Redenumește fișierul settings.xml în configuration.xml</description>
+            <command>git mv settings.xml configuration.xml</command>
+        </step>
+
+        <step>
+            <number>8</number>
+            <description>Fă commit pentru fișierul redenumit configuration.xml</description>
+            <command>git commit -m "Commit configuration.xml"</command>
+        </step>
+
+        <step>
+            <number>9</number>
+            <description>Modifică mesajul pentru ultimul commit</description>
+            <command>git commit --amend -m "Commit file configuration.xml"</command>
+        </step>
+
+        <step>
+            <number>10</number>
+            <description>Transmite toate modificările în repository-ul remote</description>
+            <command>git push origin master</command>
+        </step>
+
+        <step>
+            <number>11</number>
+            <description>Evaluează rezultatul</description>
+            <text>Verifică repository-ul tău pe GitHub pentru a te asigura că fișierele și commit-urile sunt corect reflectate.</text>
+        </step>
+    </section>
+
+    <section id="commit_continued">
+        <title>II. Commit (Continuație)</title>
+
+        <step>
+            <number>1</number>
+            <description>Adaugă fișierul remote page1.html</description>
+            <command>touch page1.html</command>
+            <command>git add page1.html</command>
+        </step>
+
+        <step>
+            <number>2</number>
+            <description>Fă commit pentru fișierul page1.html</description>
+            <command>git commit -m "Commit file page1.html"</command>
+        </step>
+
+        <step>
+            <number>3</number>
+            <description>Actualizează repository-ul local</description>
+            <command>git pull origin master</command>
+        </step>
+
+        <step>
+            <number>4</number>
+            <description>Revino la commit-ul Commit file configuration.xml</description>
+            <command>git checkout &lt;commit-hash&gt;</command>
+        </step>
+
+        <step>
+            <number>5</number>
+            <description>Actualizează repository-ul remote</description>
+            <command>git push origin master</command>
+        </step>
+
+        <step>
+            <number>6</number>
+            <description>Evaluează rezultatul</description>
+            <text>Verifică repository-ul GitHub pentru a te asigura că modificările sunt reflectate corect.</text>
+        </step>
+    </section>
+
+    <section id="branch">
+        <title>III. Branch</title>
+
+        <step>
+            <number>1</number>
+            <description>Crează branch-ul remote stage din master</description>
+            <command>git checkout master</command>
+            <command>git checkout -b stage</command>
+            <command>git push origin stage</command>
+        </step>
+
+        <step>
+            <number>2</number>
+            <description>Creează fișierul hosts.xml în branch-ul stage</description>
+            <command>touch hosts.xml</command>
+            <command>git add hosts.xml</command>
+            <command>git commit -m "Commit file hosts.xml"</command>
+            <command>git push origin stage</command>
+        </step>
+
+        <step>
+            <number>3</number>
+            <description>Actualizează repository-ul local</description>
+            <command>git pull origin stage</command>
+        </step>
+
+        <step>
+            <number>4</number>
+            <description>Adaugă modificările din stage în master local și remote</description>
+            <command>git checkout master</command>
+            <command>git merge stage</command>
+            <command>git push origin master</command>
+        </step>
+
+        <step>
+            <number>5</number>
+            <description>Evaluează rezultatul</description>
+            <text>Verifică pe GitHub dacă fișierul hosts.xml a fost adăugat corect în branch-ul master.</text>
+        </step>
+    </section>
+
+    <section id="branch_continued">
+        <title>IV. Branch (Continuație)</title>
+
+        <step>
+            <number>1</number>
+            <description>Crează branch-ul local dev din stage</description>
+            <command>git checkout -b dev stage</command>
+        </step>
+
+        <step>
+            <number>2</number>
+            <description>Creează fișierul env.txt</description>
+            <command>touch env.txt</command>
+            <command>git add env.txt</command>
+            <command>git commit -m "Commit file env.txt"</command>
+            <command>git push origin dev</command>
+        </step>
+
+        <step>
+            <number>3</number>
+            <description>Adaugă modificările din dev în stage</description>
+            <command>git checkout stage</command>
+            <command>git merge dev</command>
+            <command>git push origin stage</command>
+        </step>
+
+        <step>
+            <number>4</number>
+            <description>Actualizează repository-ul remote</description>
+            <command>git push origin stage</command>
+        </step>
+
+        <step>
+            <number>5</number>
+            <description>Evaluează rezultatul</description>
+            <text>Verifică pe GitHub dacă fișierul env.txt a fost adăugat corect în branch-ul stage.</text>
+        </step>
+    </section>
+
+    <section id="rename_branch">
+        <title>V. Branch (Continuație)</title>
+
+        <step>
+            <number>1</number>
+            <description>Redenumește branch-ul local dev în develop</description>
+            <command>git branch -m dev develop</command>
+        </step>
+
+        <step>
+            <number>2</number>
+            <description>Actualizează repository-ul remote</description>
+            <command>git push origin :dev</command>
+            <command>git push origin develop</command>
+        </step>
+
+        <step>
+            <number>3</number>
+            <description>Evaluează rezultatul</description>
+            <text>Verifică pe GitHub dacă branch-ul develop este acum corect adăugat și că branch-ul dev a fost șters.</text>
+        </step>
+    </section>
+</git_guide>
